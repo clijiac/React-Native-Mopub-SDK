@@ -23,40 +23,40 @@ Pod::Spec.new do |s|
     
     s.subspec "MoPub" do |ss|
         
-        ss.dependency 'mopub-ios-sdk', '~> 5.0'
+        ss.dependency 'mopub-ios-sdk', '~> 5.11.0'
         
         s.static_framework = true
     end
     
     s.subspec "AdColony" do |ss|
         
-        ss.dependency 'MoPub-AdColony-Adapters', '~> 3.3.7.0'
+        ss.dependency 'MoPub-AdColony-Adapters', '~> 4.1.2.1'
         
     end
     
 
     s.subspec "AdMob" do |ss|
         
-        ss.dependency 'MoPub-AdMob-Adapters', '~> 7.39.0.0'
+        ss.dependency 'MoPub-AdMob-Adapters', '~> 7.53.1.2'
         
     end
     
     
     s.subspec "Tapjoy" do |ss|
         
-        ss.dependency 'MoPub-TapJoy-Adapters', '~> 12.2.0.4'
+        ss.dependency 'MoPub-TapJoy-Adapters', '~> 12.4.1.0'
         
     end
     
     s.subspec "AppLovin" do |ss|
         
-        ss.dependency 'MoPub-Applovin-Adapters', '~> 6.2.0.1'
+        ss.dependency 'MoPub-Applovin-Adapters', '~> 6.11.1.0'
         
     end
     
     s.subspec "Vungle" do |ss|
         
-        ss.dependency 'MoPub-Vungle-Adapters', '~> 6.3.2.5'
+        ss.dependency 'MoPub-Vungle-Adapters', '~> 6.4.6.1'
         
     end
     
