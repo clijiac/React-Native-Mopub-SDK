@@ -8,6 +8,11 @@ import com.mopub.common.MoPub;
 import com.mopub.common.SdkConfiguration;
 import com.mopub.common.SdkInitializationListener;
 import com.mopub.common.logging.MoPubLog;
+import com.mopub.common.privacy.PersonalInfoManager;
+import com.mopub.common.privacy.ConsentDialogListener;
+import com.mopub.mobileads.MoPubErrorCode;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by usamaazam on 29/03/2019.
@@ -15,7 +20,7 @@ import com.mopub.common.logging.MoPubLog;
 
 public class AdLibSDK {
 
-    static void initializeAdSDK(final RNMoPubBanner banner, final String adUnitId, final Activity context) {
+    static void initializeAdSDK(final RNMoPubBanner banner, final String adUnitId, final Boolean shouldShowGDPR, final Activity context) {
 
         Handler mainHandler = new Handler(context.getMainLooper());
 
@@ -41,6 +46,24 @@ public class AdLibSDK {
                             banner.loadAd();
                         }
 
+                        final PersonalInfoManager mPersonalInfoManager = MoPub.getPersonalInformationManager();
+                        
+                        if (shouldShowGDPR && mPersonalInfoManager.shouldShowConsentDialog()) {
+                            mPersonalInfoManager.loadConsentDialog(new ConsentDialogListener() {
+
+                                @Override
+                                public void onConsentDialogLoaded() {
+                                    if (mPersonalInfoManager != null) {
+                                        mPersonalInfoManager.showConsentDialog();
+                                    }
+                                }
+
+                                @Override
+                                public void onConsentDialogLoadFailed(@NonNull MoPubErrorCode moPubErrorCode) {
+                                    MoPubLog.i("Consent dialog failed to load.");
+                                }
+                            });
+                        }
                     }
                 };
             }

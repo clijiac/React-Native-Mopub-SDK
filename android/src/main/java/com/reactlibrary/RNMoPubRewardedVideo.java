@@ -36,13 +36,13 @@ public class RNMoPubRewardedVideo extends ReactContextBaseJavaModule implements 
         mReactContext = reactContext;
     }
 
-    public static final String ON_REWARDED_VIDEO_LOAD_SUCCESS = "onRewardedVideoLoadSuccess";
-    public static final String ON_REWARDED_VIDEO_LOAD_FAILURE = "onRewardedVideoLoadFailure";
+    public static final String ON_REWARDED_VIDEO_LOAD_SUCCESS = "rewardedVideoAdDidLoadForAdUnitID";
+    public static final String ON_REWARDED_VIDEO_LOAD_FAILURE = "rewardedVideoAdDidFailToLoadForAdUnitID";
     public static final String ON_REWARDED_VIDEO_STARTED = "onRewardedVideoStarted";
     public static final String ON_REWARDED_VIDEO_PLAYBACK_ERROR = "onRewardedVideoPlaybackError";
-    public static final String ON_REWARDED_VIDEO_CLOSED = "onRewardedVideoClosed";
-    public static final String ON_REWARDED_VIDEO_COMPLETED = "onRewardedVideoCompleted";
-    public static final String ON_REWARDED_VIDEO_CLICKED = "onRewardedVideoClicked";
+    public static final String ON_REWARDED_VIDEO_CLOSED = "rewardedVideoAdDidDisappearForAdUnitID";
+    public static final String ON_REWARDED_VIDEO_COMPLETED = "rewardedVideoAdShouldRewardForAdUnitID";
+    public static final String ON_REWARDED_VIDEO_CLICKED = "rewardedVideoAdDidReceiveTapEventForAdUnitID";
 
 
     @Override
@@ -56,9 +56,9 @@ public class RNMoPubRewardedVideo extends ReactContextBaseJavaModule implements 
 
 
     @ReactMethod
-    public void initializeSdkForRewardedVideoAd(String adUnitId) {
+    public void initializeSdkForRewardedVideoAd(String adUnitId, Boolean shouldShowGDPR) {
 
-        AdLibSDK.initializeAdSDK(null, adUnitId, mReactContext.getCurrentActivity());
+        AdLibSDK.initializeAdSDK(null, adUnitId, shouldShowGDPR, mReactContext.getCurrentActivity());
 
     }
 
