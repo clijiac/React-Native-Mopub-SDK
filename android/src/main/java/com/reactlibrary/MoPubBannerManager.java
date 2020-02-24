@@ -36,14 +36,10 @@ public class MoPubBannerManager extends SimpleViewManager<RNMoPubBanner> {
 
     @ReactProp(name = "adUnitId")
     public void setAdUnitId(RNMoPubBanner view, String adUnitId) {
-
         if(MoPub.isSdkInitialized()) {
             view.setAdUnitId(adUnitId);
             view.loadAd();
-        } else {
-            AdLibSDK.initializeAdSDK(view, adUnitId, false, rnMoPubBanner.mContext.getCurrentActivity());
         }
-
     }
 
     @ReactProp(name = "testing", defaultBoolean = false)
