@@ -12,6 +12,10 @@ import com.mopub.common.privacy.PersonalInfoManager;
 import com.mopub.common.privacy.ConsentDialogListener;
 import com.mopub.mobileads.MoPubErrorCode;
 
+import com.mopub.mobileads.FacebookAdapterConfiguration;
+import java.util.HashMap;
+import java.util.Map;
+
 import androidx.annotation.NonNull;
 
 /**
@@ -27,9 +31,15 @@ public class AdLibSDK {
         Runnable myRunnable = new Runnable() {
             @Override
             public void run() {
+                Map<String, String> facebookConfig = new HashMap<>();
+                facebookConfig.put("banner", "");
+                facebookConfig.put("interstitial", "");
+
+                MoPubLog.d("----------------FACEBOOK: " + FacebookAdapterConfiguration.class.getName());
 
                 SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(adUnitId)
                         .withLogLevel(MoPubLog.LogLevel.DEBUG)
+                        .withMediatedNetworkConfiguration(FacebookAdapterConfiguration.class.getName(), facebookConfig)
                         .withLegitimateInterestAllowed(false)
                         .build();
 
