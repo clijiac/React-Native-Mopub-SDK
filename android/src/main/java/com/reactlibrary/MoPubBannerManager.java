@@ -44,6 +44,7 @@ public class MoPubBannerManager extends SimpleViewManager<RNMoPubBanner> {
             view.loadAd();
         } else {
             MoPubLog.d("----------------SDK IS NOT INITIALIZED FOR " + adUnitId);
+            AdLibSDK.initializeAdSDK(view, adUnitId, false, rnMoPubBanner.mContext.getCurrentActivity());
         }
     }
 
