@@ -31,15 +31,13 @@ public class AdLibSDK {
         Runnable myRunnable = new Runnable() {
             @Override
             public void run() {
-                /* Map<String, String> facebookConfig = new HashMap<>();
+                Map<String, String> facebookConfig = new HashMap<>();
                 facebookConfig.put("banner", "");
                 facebookConfig.put("interstitial", "");
 
-                MoPubLog.d("----------------FACEBOOK: " + FacebookAdapterConfiguration.class.getName()); */
-
                 SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(adUnitId)
                         .withLogLevel(MoPubLog.LogLevel.DEBUG)
-                        /* .withMediatedNetworkConfiguration(FacebookAdapterConfiguration.class.getName(), facebookConfig)*/
+                        .withMediatedNetworkConfiguration(FacebookAdapterConfiguration.class.getName(), facebookConfig)
                         .withLegitimateInterestAllowed(false)
                         .build();
 
