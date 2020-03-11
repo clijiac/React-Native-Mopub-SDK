@@ -10,6 +10,8 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.mopub.common.MoPub;
 
+import com.mopub.common.logging.MoPubLog;
+
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -37,8 +39,11 @@ public class MoPubBannerManager extends SimpleViewManager<RNMoPubBanner> {
     @ReactProp(name = "adUnitId")
     public void setAdUnitId(RNMoPubBanner view, String adUnitId) {
         if(MoPub.isSdkInitialized()) {
+            MoPubLog.d("----------------SDK IS INITIALIZED");
             view.setAdUnitId(adUnitId);
             view.loadAd();
+        } else {
+            MoPubLog.d("----------------SDK IS NOT INITIALIZED FOR " + adUnitId);
         }
     }
 
