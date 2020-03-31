@@ -66,7 +66,11 @@ public class RNMoPubInterstitialModule extends ReactContextBaseJavaModule implem
     @ReactMethod
     public void loadAd() {
         if (mInterstitial != null) {
-            mInterstitial.load();
+            try {
+                mInterstitial.load();
+            } catch (Exception e) {
+                mInterstitial = null;
+            }
         }
     }
 
