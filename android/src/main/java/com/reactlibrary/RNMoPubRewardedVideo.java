@@ -17,9 +17,7 @@ import com.mopub.mobileads.MoPubRewardedVideos;
 
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import javax.annotation.Nullable;
 
@@ -64,10 +62,13 @@ public class RNMoPubRewardedVideo extends ReactContextBaseJavaModule implements 
 
     @ReactMethod
     public void loadRewardedVideoAdWithAdUnitID(String adUnitId) {
-
-        MoPubRewardedVideos.loadRewardedVideo(adUnitId);
+        mReactContext.getCurrentActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                MoPubRewardedVideos.loadRewardedVideo(adUnitId);
+             }
+        });
         MoPubRewardedVideos.setRewardedVideoListener(this);
-
     }
 
 
