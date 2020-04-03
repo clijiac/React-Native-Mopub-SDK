@@ -61,7 +61,7 @@ public class RNMoPubRewardedVideo extends ReactContextBaseJavaModule implements 
     }
 
     @ReactMethod
-    public void loadRewardedVideoAdWithAdUnitID(String adUnitId) {
+    public void loadRewardedVideoAdWithAdUnitID(final String adUnitId) {
         mReactContext.getCurrentActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
