@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
 
     s.subspec "AdMob" do |ss|
         
-        ss.dependency 'MoPub-AdMob-Adapters', '~> 7.53.1.2'
+        ss.dependency 'MoPub-AdMob-Adapters', '~> 7.50'
         
     end
     
